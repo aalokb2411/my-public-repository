@@ -18,7 +18,8 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      - printf '{"passedvar":"%s"}' "$CODEBUILD_RESOLVED_SOURCE_VERSION" > passedvariable.json
+      #- printf '{"passedvar":"%s"}' "$CODEBUILD_RESOLVED_SOURCE_VERSION" > passedvariable.json
+      - echo "export CODEBUILD_RESOLVED_SOURCE_VERSION=$CODEBUILD_RESOLVED_SOURCE_VERSION" >variable.sh
 artifacts:
   files:
     - "**/*"
