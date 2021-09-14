@@ -4,7 +4,7 @@
         "pre_build": {
             "commands": [
                 "cat passedvariable.json | jq '.passedvar'",
-                "export CODEBUILD_RESOLVED_SOURCE_VERSION=`cat passedvariable.json | jq '.passedvar'`",
+                "source variable.sh",
                 "echo $CODEBUILD_RESOLVED_SOURCE_VERSION"
             ]
         }
