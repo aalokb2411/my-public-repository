@@ -4,7 +4,7 @@
         "pre_build": {
             "commands": [
                 "ls -ltr",
-                "source variable.sh",
+                "source ./variable.sh",
                 "echo $CODEBUILD_RESOLVED_SOURCE_VERSION"
             ]
         }
