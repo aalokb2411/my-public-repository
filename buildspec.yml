@@ -3,7 +3,7 @@
     "phases": {
         "pre_build": {
             "commands": [
-                "ls -ltr
+                "ls -ltr",
                 "source variable.sh",
                 "echo $CODEBUILD_RESOLVED_SOURCE_VERSION"
             ]
