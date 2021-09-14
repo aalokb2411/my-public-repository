@@ -3,7 +3,7 @@
     "phases": {
         "pre_build": {
             "commands": [
-                "cat passedvariable.json | jq '.passedvar'",
+                "ls -ltr
                 "source variable.sh",
                 "echo $CODEBUILD_RESOLVED_SOURCE_VERSION"
             ]
