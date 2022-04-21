@@ -25,4 +25,4 @@ artifacts:
   files:
     - '**/*'
   base-directory: artifacts_codebuild
-  name: $ARTIFACT_NAME
+  name: pr7969batch672
