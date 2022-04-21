@@ -16,8 +16,10 @@ phases:
       # create file with version in it
       - mkdir artifacts_codebuild
       - mkdir -p qa/jw/shared
+      - touch abc.txt abc.txt1
+      - mv abc.txt abc.txt1 qa/jw/shared
       - ls -ltr
-      - mv qa/* artifacts_codebuild
+      - mv qa artifacts_codebuild
       # list what should be in artifact
       - ls -al artifacts_codebuild
       - codebuild-breakpoint
@@ -25,5 +27,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: artifacts_codebuild
+  #base-directory: artifacts_codebuild
   #name: pr7969batch672
