@@ -13,21 +13,6 @@ phases:
       - ls -al
   build:
     commands:
-     
-      - npm ci
-      - npm run format:check
-     
-      - export NODE_OPTIONS=--max_old_space_size=4096
-
-      # - npm run bundle --unsafe_perm, expands to the following 3 commands
-      - npm ci --no-optional # TODO: do we need to run this again?
-      - npm run build:ci:debug #outputs to ./artifacts
-      - npm run build:ci:prod # outputs 3 .min files to ./artifacts
-
-      - npm run sample:abr:build --unsafe_perm # outputs to ./examples/web/abr/dist
-
-      - npm run dev-player:build --unsafe_perm # outputs to ./examples/web/dev-player/dist
-
       # create file with version in it
       - mkdir artifacts_codebuild
       - mkdir -p qa/jw/shared
