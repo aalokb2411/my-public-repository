@@ -20,6 +20,7 @@ phases:
       - mv qa/* artifacts_codebuild
       # list what should be in artifact
       - ls -al artifacts_codebuild
+      - codebuild-breakpoint
 
 artifacts:
   files:
