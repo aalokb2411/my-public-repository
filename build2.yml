@@ -20,7 +20,7 @@ phases:
 
       # run gadget job for npm:pack
       # TODO: move from python to here
-      - $CODEBUILD_SRC_DIR/gadget run-job web/$AUTO_ACTION
+     # - $CODEBUILD_SRC_DIR/gadget run-job web/$AUTO_ACTION
 
       - ls -al artifacts_codebuild
 
