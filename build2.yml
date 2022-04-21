@@ -16,14 +16,8 @@ phases:
       # create file with version in it
       - mkdir artifacts_codebuild
       - mkdir -p qa/jw/shared
-      - mv qa/jw/shared artifacts_codebuild
-
-      # run gadget job for npm:pack
-      # TODO: move from python to here
-     # - $CODEBUILD_SRC_DIR/gadget run-job web/$AUTO_ACTION
-
-      - ls -al artifacts_codebuild
-
+      - ls -ltr
+      - mv qa/* artifacts_codebuild
       # list what should be in artifact
       - ls -al artifacts_codebuild
 
