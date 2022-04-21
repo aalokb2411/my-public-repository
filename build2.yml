@@ -1,0 +1,53 @@
+version: 0.2
+
+env:
+  shell: bash
+phases:
+  install:
+    commands:
+      - echo "in install phase"
+
+  pre_build:
+    commands:
+      - pwd
+      - ls -al
+  build:
+    commands:
+      - ~/emsdk/emsdk list
+      - source /root/emsdk/emsdk_env.sh
+      - ~/emsdk/emsdk activate 2.0.13
+      - ~/emsdk/emsdk list
+
+      - npm ci
+      - npm run format:check
+      - source /root/emsdk/emsdk_env.sh
+      - export NODE_OPTIONS=--max_old_space_size=4096
+
+      # - npm run bundle --unsafe_perm, expands to the following 3 commands
+      - npm ci --no-optional # TODO: do we need to run this again?
+      - npm run build:ci:debug #outputs to ./artifacts
+      - npm run build:ci:prod # outputs 3 .min files to ./artifacts
+
+      - npm run sample:abr:build --unsafe_perm # outputs to ./examples/web/abr/dist
+
+      - npm run dev-player:build --unsafe_perm # outputs to ./examples/web/dev-player/dist
+
+      # create file with version in it
+      - mkdir artifacts_codebuild
+      - mkdir -p qa/jw/shared
+      - mv qa/jw/shared artifacts_codebuild
+
+      # run gadget job for npm:pack
+      # TODO: move from python to here
+      - $CODEBUILD_SRC_DIR/gadget run-job web/$AUTO_ACTION
+
+      - ls -al artifacts_codebuild
+
+      # list what should be in artifact
+      - ls -al artifacts_codebuild
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: artifacts_codebuild
+  name: $ARTIFACT_NAME
